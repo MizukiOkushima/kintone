@@ -1,5 +1,4 @@
 (function () {
-
   // CDNを利用すること
   // https://unpkg.com/kintone-ui-component/umd/kuc.min.js
   // バージョン指定の場合
@@ -20,10 +19,14 @@
     id: id,
   });
 
-  // ボタン追加
-  if (!$("#btnDownload").length) {
-    myHeaderMenuSpaceElement1.append(btnDownload);
+  // レコード詳細画面の場合、前後レコード移動ボタンを押すと、
+  // 前ページで読み込んだボタンが残ってしまうので初期化する
+  if ($("#btnDownload").length) {
+    $("#btnDownload").remove();
   }
+
+  // ボタン追加
+  myHeaderMenuSpaceElement2.append(btnDownload);
 
   // ボタンクリックイベント
   btnDownload.addEventListener("click", async () => {
