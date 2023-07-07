@@ -24,8 +24,6 @@ padding: 6px 8px;">ここ</span><div>
     targetTh[0].innerHTML = thTag;
     targetTh[1].innerHTML = thTag;
 
-    return event;
-
   });
 
 })();
