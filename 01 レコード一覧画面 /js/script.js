@@ -17,9 +17,11 @@
 
     // 追加用タグ 他のthは並び替え用ボタン機能のdivタグがあるため省略し、marginとpaddingのみ省いたdivタグからstyleを指定
     const thTag = `
-        <div class="recordlist-header-cell-inner-wrapper-gaia">
-            <span class="recordlist-header-label-gaia" style="margin-right: -5px; padding: 6px 8px;">確認完了</span>
-        <div>
+      <div class="recordlist-header-cell-inner-wrapper-gaia">
+          <div class="recordlist-header-cell-inner-gaia">
+              <span class="recordlist-header-label-gaia">タイトル</span>
+          </div>
+      <div>
     `;
 
     // メインのthと追従用のthにタグを追加する
