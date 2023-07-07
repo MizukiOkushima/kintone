@@ -15,9 +15,11 @@
     // 表の最終thを指定
     let targetTh = document.querySelectorAll("table th:last-child");
 
+    // 追加用タグ 他のthは並び替え用ボタン機能のdivタグがあるため省略し、marginとpaddingのみ省いたdivタグからstyleを指定
     const thTag = `
-      <div class="recordlist-header-cell-inner-wrapper-gaia"><span class="recordlist-header-label-gaia" style="margin-right: -5px;
-padding: 6px 8px;">ここ</span><div>
+        <div class="recordlist-header-cell-inner-wrapper-gaia">
+            <span class="recordlist-header-label-gaia" style="margin-right: -5px; padding: 6px 8px;">確認完了</span>
+        <div>
     `;
 
     // メインのthと追従用のthにタグを追加する
