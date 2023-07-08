@@ -12,21 +12,27 @@
 
     // テーブル レコード編集・削除にタイトルをつける
 
-    // 表の最終thを指定
-    let targetTh = document.querySelectorAll("table th:last-child");
+    // 追記タイトル
+    const title = 'タイトル';
 
-    // 追加用タグ 他のthは並び替え用ボタン機能のdivタグがあるため省略し、marginとpaddingのみ省いたdivタグからstyleを指定
+    // 追加用タグ
     const thTag = `
       <div class="recordlist-header-cell-inner-wrapper-gaia">
           <div class="recordlist-header-cell-inner-gaia">
-              <span class="recordlist-header-label-gaia">タイトル</span>
+              <span class="recordlist-header-label-gaia">` + title + `</span>
           </div>
       <div>
     `;
 
-    // メインのthと追従用のthにタグを追加する
-    targetTh[0].innerHTML = thTag;
-    targetTh[1].innerHTML = thTag;
+    // 表の最終thを指定
+    let targetTh = document.querySelectorAll("table th:last-child");
+
+    // メインのthと追従用のthの2つにタグを追加
+    if (targetTh.length !== 0) {
+        for (let i = 0; i < targetTh.length; i++) {
+            targetTh[i].innerHTML = thTag;
+        }
+    }
 
   });
 
