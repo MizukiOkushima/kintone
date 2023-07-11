@@ -29,9 +29,12 @@
 
     // メインのthと追従用のthの2つにタグを追加
     if (targetTh.length !== 0) {
-        for (let i = 0; i < targetTh.length; i++) {
-            targetTh[i].innerHTML = thTag;
+      for (let target of targetTh) {
+        if (target.childNodes.length === 0) {
+          target.style.width = '78px';
+          target.innerHTML = thTag;
         }
+      }
     }
 
   });
