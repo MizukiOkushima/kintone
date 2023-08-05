@@ -19,7 +19,7 @@
     const thTag = `
       <div class="recordlist-header-cell-inner-wrapper-gaia">
           <div class="recordlist-header-cell-inner-gaia">
-              <span class="recordlist-header-label-gaia">` + title + `</span>
+              <span class="recordlist-header-label-gaia">${title}</span>
           </div>
       <div>
     `;
