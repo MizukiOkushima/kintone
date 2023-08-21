@@ -26,7 +26,7 @@
     ];
 
     // 汎用エラーメッセージ
-    const COMMON_ERROR_MESSAGE = 'エラーが発生しました。システム担当者に連絡してください。'
+    const COMMON_ERROR_MESSAGE = 'エラーが発生しました。システム担当者に連絡してください。';
 
     //作成・編集イベント
     kintone.events.on(events_create_edit, (event) => {
