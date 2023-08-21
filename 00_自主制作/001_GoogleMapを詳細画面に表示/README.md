@@ -9,4 +9,10 @@
 
 ## 解説
 GoogleMapのAPIは有料で回数制限があるが、iframeを使用することで無料で使用可能
-kintoneのチェンジイベントについては、検索用フィールドからフォーカスが外れるタイミグ、またはreturnキーを押すことでイベント発生となるので注意
+kintoneのチェンジイベントについては、検索用フィールドからフォーカスが外れるタイミグ、
+またはreturnキーを押すことでイベント発生となるので注意
+
+## イメージ
+![スクリーンショット 2023-08-21 20 24 43](https://github.com/MizukiOkushima/kintone/assets/95268598/9bfc8582-7759-4d26-a5bf-7917317860ce)
+
+![スクリーンショット 2023-08-21 20 25 03](https://github.com/MizukiOkushima/kintone/assets/95268598/173ca83d-b3f1-4a30-b23e-1030b09e50f5)
