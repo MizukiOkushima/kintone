@@ -8,6 +8,9 @@
 		'app.record.edit.change.zipcode'
 	];
 
+	// 汎用エラーメッセージ
+	const COMMON_ERROR_MESSAGE = 'エラーが発生しました。システム担当者に連絡してください。';
+
 	kintone.events.on(events_change_zipcode, (event) => {
 
 		try {
@@ -25,7 +28,7 @@
 					record.pref.value = response.data.pref;                 // 都道府県
 					record.city.value = response.data.city;                 // 市区町村
 					record.town.value = response.data.town;                 // 地域
-					record.address.value = response.data.address;              // 市区町村＆地域
+					record.address.value = response.data.address;           // 市区町村＆地域
 					record.fullAddress.value = response.data.fullAddress;   // 都道府県＆市区町村＆地域
 				}
 			});
@@ -33,7 +36,7 @@
 		} catch (error) {
 
 			console.log(error);
-			event.error = COMMON_ERROR_MESSAGE;
+			event.error = COMMON_ERROR_MESSAGE + '/n' + error.message;
 
 			return event;
 		}
