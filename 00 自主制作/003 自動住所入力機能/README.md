@@ -4,7 +4,7 @@
 
 ## 設定フィールド
 | Type | 必須 | 重複禁止 | フィールド名 | フィールドコード |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | SINGLE_LINE_TEXT | ◯ | - | 郵便番号 | zipcode |
 | SINGLE_LINE_TEXT | - | - | 都道府県 | pref |
 | SINGLE_LINE_TEXT | - | - | 市区町村 | city |
@@ -22,3 +22,4 @@
 https://blogs.techvan.co.jp/kintone/2020/02/26/%E3%80%90%E7%B0%A1%E5%8D%98%E3%81%99%E3%81%8E%E3%82%8B%E3%80%91%E9%83%B5%E4%BE%BF%E7%95%AA%E5%8F%B7%E3%81%A7%E4%BD%8F%E6%89%80%E6%A4%9C%E7%B4%A2%EF%BC%81/<br>
 
 ## イメージ
+![スクリーンショット](https://github.com/MizukiOkushima/kintone/assets/95268598/1597b3ff-eaad-4b30-94a0-e5f8e270fb13)
