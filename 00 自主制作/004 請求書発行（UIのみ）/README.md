@@ -33,6 +33,8 @@
 このアプリIDは登録した環境によって変動するため設定が必要です<br>
 アプリIDについては各アプリを開いた際の末尾URLから確認可能です<br>
 
+参考画像
+![619b1bbbb7400](https://github.com/MizukiOkushima/kintone/assets/95268598/1b992b45-51cc-4df6-a89d-b11e92c7b255)
 
 
 ```JavaScript
@@ -46,3 +48,4 @@
 ```
 
 ## イメージ
+![dev-fukuinet cybozu com_k_1084_](https://github.com/MizukiOkushima/kintone/assets/95268598/961dc79c-969f-463b-b2f2-3420149e50fb)
