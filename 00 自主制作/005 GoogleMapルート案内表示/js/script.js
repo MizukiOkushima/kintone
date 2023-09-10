@@ -120,6 +120,8 @@
 
             event.record['終了位置'].disabled = true;
 
+            event.record['縮尺率'].disabled = true;
+
             event.record['iframeText'].disabled = true;
 
             return event;
