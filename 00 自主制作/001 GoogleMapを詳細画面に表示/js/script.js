@@ -5,8 +5,7 @@
     // 作成・編集イベント
     const events_create_edit = [
         'app.record.create.show',
-        'app.record.edit.show',
-        'app.record.index.edit.show'
+        'app.record.edit.show'
     ];
 
     // 詳細画面表示
@@ -34,6 +33,15 @@
         try {
 
             kintone.app.record.setFieldShown('iframeText', false);
+
+            const iframeSpace = event.record['iframeText'].value;
+            
+            // 編集時にiframeSpaceにすでに検索結果のタグが挿入されている場合、再描写
+            if (event.type == 'app.record.edit.show' && iframeSpace != undefined) {
+
+                document.getElementById('user-js-iframeSpace').innerHTML = iframeSpace;
+
+            }
 
             return event;
 
@@ -94,22 +102,26 @@
 
         try {
 
+            // 生成する地図のサイズ指定
+            const width = 900;
+            const height = 600;
+
             const searchValue = event.record['文字列検索'].value;
 
-            const iframe = `<iframe src="https://maps.google.co.jp/maps?output=embed&q=${searchValue}" width="900" height="600" frameborder="0" style="border:0" allowfullscreen ></iframe>`;
+            const iframe = `<iframe src="https://maps.google.co.jp/maps?output=embed&q=${searchValue}" width="${width}" height="${height}" frameborder="0" style="border:0" allowfullscreen ></iframe>`;
 
             event.record['iframeText'].value = iframe;
 
             const iframeText = event.record['iframeText'].value;
 
-            if(document.getElementById('user-js-iframeSpace').hasChildNodes()) {
-                
+            if (document.getElementById('user-js-iframeSpace').hasChildNodes()) {
+
                 document.getElementById('user-js-iframeSpace').innerHTML = ``;
 
             }
-            
+
             const iframeSpace = kintone.app.record.getSpaceElement('iframeSpace');
-            
+
             iframeSpace.insertAdjacentHTML('beforeend', iframeText);
 
             return event;
