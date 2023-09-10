@@ -6,8 +6,9 @@
 | Type | 必須 | フィールド名 | フィールドコード or 要素ID |
 | --- | --- | --- | --- |
 | SINGLE_LINE_TEXT | - | 開始位置 | 開始位置 |
+| SPACER | - | - | startLocation |
 | SINGLE_LINE_TEXT | ◯ | 終了位置 | 終了位置 |
-| SPACER | - | - | currentLocation |
+| SPACER | - | - | endLocation |
 | RADIO_BUTTON | ◯ | 縮尺率 | 縮尺率 |
 | MULTI_LINE_TEXT | - | iframe | iframeText |
 | SPACER | - | - | iframeSpace |
@@ -36,4 +37,4 @@ https://guillemot.jp/web/205<br>
 https://community.cybozu.dev/t/topic/3544/2<br>
 
 ## イメージ
-![スクリーンショット 2023-09-10 14 46 50](https://github.com/MizukiOkushima/kintone/assets/95268598/e0693c67-a32e-46d9-adcc-91fbfa98499a)
+![スクリーンショット 2023-09-11 0 25 04](https://github.com/MizukiOkushima/kintone/assets/95268598/3ddfad71-cdd6-488c-a466-6e879accee4c)
