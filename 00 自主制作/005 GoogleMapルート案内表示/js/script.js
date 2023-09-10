@@ -176,7 +176,7 @@
 
             } else if (startValue == undefined && endValue != undefined) {
 
-                iframe = `<iframe src="https://maps.google.co.jp/maps?output=embed&q=${endValue}" width="${width}" height="${height}" frameborder="0" style="border:0" allowfullscreen ></iframe>`;
+                iframe = `<iframe src="https://maps.google.co.jp/maps?output=embed&q=${endValue}&z=${zoom}" width="${width}" height="${height}" frameborder="0" style="border:0" allowfullscreen ></iframe>`;
 
             } else {
 
