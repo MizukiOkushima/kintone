@@ -36,3 +36,4 @@ https://guillemot.jp/web/205<br>
 https://community.cybozu.dev/t/topic/3544/2<br>
 
 ## イメージ
+![スクリーンショット 2023-09-10 14 46 50](https://github.com/MizukiOkushima/kintone/assets/95268598/e0693c67-a32e-46d9-adcc-91fbfa98499a)
