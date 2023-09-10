@@ -1,4 +1,7 @@
-#btnGetLocation {
+#user-js-startLocation,
+#user-js-endLocation {
+    display: flex;
     margin-top: 28px;
-    margin-left: 15px;
+    margin-left: 10px;
+    gap: 16px;
 }

@@ -30,6 +30,7 @@
 
     // 汎用エラーメッセージ
     const COMMON_ERROR_MESSAGE = 'エラーが発生しました。システム担当者に連絡してください。';
+    const COMMON_BROWSER_INCOMPATIBLE = 'このブラウザは位置情報取得に対応していません！';
 
     //作成・編集イベント
     kintone.events.on(events_create_edit, async (event) => {
@@ -47,43 +48,68 @@
 
             }
 
-            // 現在地取得ボタン設置
-            let spaceElement = $("#user-js-currentLocation");
+            // 現在地取得ボタン、クリアボタン設置
+            let startElement = $("#user-js-startLocation");
+            let endElement = $("#user-js-endLocation");
 
             const Kuc = Kucs["1.8.0"];
 
-            const btnGetLocation = new Kuc.Button({
+            const btnGetStartLocation = new Kuc.Button({
                 text: '現在地取得',
-                type: 'normal',
-                id: 'btnGetLocation',
+                type: 'submit',
+                id: 'btnGetStartLocation'
             });
 
-            if (spaceElement.length) {
+            const btnClearStartValue = new Kuc.Button({
+                text: 'クリア',
+                type: 'alert',
+                id: 'btnClearStartValue'
+            });
+
+            const btnGetEndLocation = new Kuc.Button({
+                text: '現在地取得',
+                type: 'submit',
+                id: 'btnGetEndLocation'
+            });
+
+            const btnClearEndValue = new Kuc.Button({
+                text: 'クリア',
+                type: 'alert',
+                id: 'btnClearEndValue'
+            });
+
+            if (startElement.length) {
 
                 // ボタン追加
-                spaceElement.append(btnGetLocation);
+                startElement.append(btnGetStartLocation);
+                startElement.append(btnClearStartValue);
 
             }
 
-            // ボタンクリックイベント
-            btnGetLocation.addEventListener("click", async () => {
+            if (endElement.length) {
 
-                // ブラウザが位置情報取得に対応する場合
+                // ボタン追加
+                endElement.append(btnGetEndLocation);
+                endElement.append(btnClearEndValue);
+
+            }
+
+            // 現在地取得処理
+            function updateLocation(field, errorMessage) {
+
                 if (navigator.geolocation) {
 
-                    navigator.geolocation.getCurrentPosition(function (position) {
+                    navigator.geolocation.getCurrentPosition(async (position) => {
 
                         //レコード取得
-                        let event = kintone.app.record.get();
-
+                        const event = kintone.app.record.get();
                         //緯度
                         const latPosition = position.coords.latitude;
-
                         //経度
                         const lngPosition = position.coords.longitude;
 
                         //文字列結合
-                        event.record['開始位置'].value = latPosition + ', ' + lngPosition;
+                        event.record[field].value = `${latPosition}, ${lngPosition}`;
 
                         // レコード追加イベントは非同期処理非対応のため、kintone.app.record.get/set
                         kintone.app.record.set(event);
@@ -93,10 +119,39 @@
                 } else {
 
                     // ブラウザが位置情報取得に未対応の場合
-                    window.alert('このブラウザーは位置情報取得に対応していません！');
+                    window.alert(errorMessage);
 
                 }
+            }
 
+            // クリア処理
+            function clearLocationValue(field) {
+
+                // レコード取得
+                const event = kintone.app.record.get();
+
+                // クリア
+                event.record[field].value = undefined;
+
+                // レコード更新
+                kintone.app.record.set(event);
+
+            }
+
+            btnGetStartLocation.addEventListener("click", () => {
+                updateLocation('開始位置', COMMON_BROWSER_INCOMPATIBLE);
+            });
+
+            btnClearStartValue.addEventListener("click", () => {
+                clearLocationValue('開始位置');
+            });
+
+            btnGetEndLocation.addEventListener("click", () => {
+                updateLocation('終了位置', COMMON_BROWSER_INCOMPATIBLE);
+            });
+
+            btnClearEndValue.addEventListener("click", () => {
+                clearLocationValue('終了位置');
             });
 
             return event;
