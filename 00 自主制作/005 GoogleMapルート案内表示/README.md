@@ -4,7 +4,7 @@
 
 ## 設定フィールド
 | Type | 必須 | フィールド名 | フィールドコード or 要素ID | 初期値 | 設定値 |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- |
 | SINGLE_LINE_TEXT | - | 開始位置 | 開始位置 | - | - |
 | SPACER | - | - | startLocation | - | - |
 | SINGLE_LINE_TEXT | ◯ | 終了位置 | 終了位置 | - | - |
@@ -39,3 +39,4 @@ https://guillemot.jp/web/205<br>
 https://community.cybozu.dev/t/topic/3544/2<br>
 
 ## イメージ
+![スクリーンショット 2023-09-11 22 08 35](https://github.com/MizukiOkushima/kintone/assets/95268598/a6866653-b390-4ad0-bcef-64ccbedf2f8c)
