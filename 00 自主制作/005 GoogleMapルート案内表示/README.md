@@ -3,15 +3,16 @@
 検索用フィールドに表示したいナビゲーションを入力し、kintoneの詳細画面にGoogleMapのルートを表示する<br>
 
 ## 設定フィールド
-| Type | 必須 | フィールド名 | フィールドコード or 要素ID |
-| --- | --- | --- | --- |
-| SINGLE_LINE_TEXT | - | 開始位置 | 開始位置 |
-| SPACER | - | - | startLocation |
-| SINGLE_LINE_TEXT | ◯ | 終了位置 | 終了位置 |
-| SPACER | - | - | endLocation |
-| RADIO_BUTTON | ◯ | 縮尺率 | 縮尺率 |
-| MULTI_LINE_TEXT | - | iframe | iframeText |
-| SPACER | - | - | iframeSpace |
+| Type | 必須 | フィールド名 | フィールドコード or 要素ID | 初期値 | 設定値 |
+| --- | --- | --- | --- | --- |
+| SINGLE_LINE_TEXT | - | 開始位置 | 開始位置 | - | - |
+| SPACER | - | - | startLocation | - | - |
+| SINGLE_LINE_TEXT | ◯ | 終了位置 | 終了位置 | - | - |
+| SPACER | - | - | endLocation | - | - |
+| RADIO_BUTTON | ◯ | 縮尺率 | 縮尺率 | 12 | 7, 8, 9 ,10, 11, 12, 13, 14, 15, 16, 17 |
+| RADIO_BUTTON | ◯ | 表示モード | 表示モード | 地図 | 地図, 航空写真, 地図 + 航空写真, 地形図, Google Earth |
+| MULTI_LINE_TEXT | - | iframe | iframeText | - | - |
+| SPACER | - | - | iframeSpace | - | - |
 
 ## 解説
 GoogleMapのAPIは有料で回数制限があるが、iframeを使用することで無料で使用可能<br>
@@ -25,6 +26,7 @@ kintoneのチェンジイベントについては、検索用フィールドか�
 <br>
 調べた限り縮尺率は自動ではなかったため「縮尺率」フィールドを用いて倍率を手動で設定できる仕様にした<br>
 日本地図の半分程度のルート案内が縮尺で表示できるように倍率は「7〜17」を採用、初期値は「12」<br>
+表示モードも用意されていたため実装<br>
 
 ## 参考文献
 住所から地図を表示する<br>
@@ -37,4 +39,3 @@ https://guillemot.jp/web/205<br>
 https://community.cybozu.dev/t/topic/3544/2<br>
 
 ## イメージ
-![スクリーンショット 2023-09-11 0 25 04](https://github.com/MizukiOkushima/kintone/assets/95268598/3ddfad71-cdd6-488c-a466-6e879accee4c)

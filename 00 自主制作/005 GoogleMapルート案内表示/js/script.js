@@ -25,7 +25,9 @@
         'app.record.create.change.終了位置',
         'app.record.edit.change.終了位置',
         'app.record.create.change.縮尺率',
-        'app.record.edit.change.縮尺率'
+        'app.record.edit.change.縮尺率',
+        'app.record.create.change.表示モード',
+        'app.record.edit.change.表示モード'
     ];
 
     // 汎用エラーメッセージ
@@ -92,6 +94,13 @@
                 endElement.append(btnGetEndLocation);
                 endElement.append(btnClearEndValue);
 
+            }
+
+            //コメント入力領域をページ読み込み時に非表示
+            const tabNone = "&tab=none";
+            if (document.URL.indexOf(tabNone) == -1) {
+                document.getElementsByClassName('gaia-argoui-app-show-sidebar-dragged')[0].style.display = "none";
+                location.replace(document.URL + "&tab=none");
             }
 
             // 現在地取得処理
@@ -177,6 +186,8 @@
 
             event.record['縮尺率'].disabled = true;
 
+            event.record['表示モード'].disabled = true;
+
             event.record['iframeText'].disabled = true;
 
             return event;
@@ -195,6 +206,13 @@
     kintone.events.on(events_show, (event) => {
 
         try {
+
+            //コメント入力領域をページ読み込み時に非表示
+            const tabNone = "&tab=none";
+            if (document.URL.indexOf(tabNone) == -1) {
+                document.getElementsByClassName('gaia-argoui-app-show-sidebar-dragged')[0].style.display = "none";
+                location.replace(document.URL + "&tab=none");
+            }
 
             let iframeText = '';
             iframeText = event.record.iframeText.value;
@@ -221,7 +239,17 @@
             const width = 900;
             const height = 600;
 
+            // 表示モード引数
+            const mapType = {
+                "地図": "m",
+                "航空写真": "k",
+                "地図 + 航空写真": "h",
+                "地形図": "p",
+                "Google Earth": "e"
+            };
+
             const zoom = event.record['縮尺率'].value;
+            const mapDisplay = event.record['表示モード'].value;
             const startValue = event.record['開始位置'].value;
             const endValue = event.record['終了位置'].value;
 
@@ -229,11 +257,11 @@
 
             if (startValue != undefined && endValue != undefined) {
 
-                iframe = `<iframe src="https://maps.google.co.jp/maps?output=embed&saddr=${startValue}&daddr=${endValue}&z=${zoom}" width="${width}" height="${height}" frameborder="0" style="border:0" allowfullscreen ></iframe>`;
+                iframe = `<iframe src="https://maps.google.co.jp/maps?output=embed&saddr=${startValue}&daddr=${endValue}&z=${zoom}&t=${mapType[mapDisplay]}" width="${width}" height="${height}" frameborder="0" style="border:0" allowfullscreen ></iframe>`;
 
             } else if (startValue == undefined && endValue != undefined) {
 
-                iframe = `<iframe src="https://maps.google.co.jp/maps?output=embed&q=${endValue}&z=${zoom}" width="${width}" height="${height}" frameborder="0" style="border:0" allowfullscreen ></iframe>`;
+                iframe = `<iframe src="https://maps.google.co.jp/maps?output=embed&q=${endValue}&z=${zoom}&t=${mapType[mapDisplay]}" width="${width}" height="${height}" frameborder="0" style="border:0" allowfullscreen ></iframe>`;
 
             } else {
 
