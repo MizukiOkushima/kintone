@@ -9,7 +9,7 @@
 | SPACER | - | - | startLocation | - | - |
 | SINGLE_LINE_TEXT | ◯ | 終了位置 | 終了位置 | - | - |
 | SPACER | - | - | endLocation | - | - |
-| RADIO_BUTTON | ◯ | 縮尺率 | 縮尺率 | 12 | 7, 8, 9 ,10, 11, 12, 13, 14, 15, 16, 17 |
+| DROP_DOWN | ◯ | 縮尺率 | 縮尺率 | 12 | 7, 8, 9 ,10, 11, 12, 13, 14, 15, 16, 17 |
 | RADIO_BUTTON | ◯ | 表示モード | 表示モード | 地図 | 地図, 航空写真, 地図 + 航空写真, 地形図, Google Earth |
 | MULTI_LINE_TEXT | - | iframe | iframeText | - | - |
 | SPACER | - | - | iframeSpace | - | - |
