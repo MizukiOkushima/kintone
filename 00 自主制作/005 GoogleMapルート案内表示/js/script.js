@@ -96,11 +96,14 @@
 
             }
 
-            //コメント入力領域をページ読み込み時に非表示
-            const tabNone = "&tab=none";
-            if (document.URL.indexOf(tabNone) == -1) {
-                document.getElementsByClassName('gaia-argoui-app-show-sidebar-dragged')[0].style.display = "none";
-                location.replace(document.URL + "&tab=none");
+            
+            // 編集イベント時にコメント入力領域をページ読み込み時に非表示
+            if(event.type == 'app.record.edit.show') {
+                const tabNone = "&tab=none";
+                if (document.URL.indexOf(tabNone) == -1) {
+                    document.getElementsByClassName('gaia-argoui-app-show-sidebar-dragged')[0].style.display = "none";
+                    location.replace(document.URL + "&tab=none");
+                }
             }
 
             // 現在地取得処理
