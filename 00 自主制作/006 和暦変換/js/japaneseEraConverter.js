@@ -11,6 +11,13 @@ class JapaneseEraConverter {
   }
 
   convertToJapaneseEra(year, month, day) {
+
+    // Number型チェック
+    if (typeof year != 'number' || typeof month != 'number' || typeof day != 'number') {
+      throw new Error("年月日を正しく入力してください。");
+    }
+
+    // japaneseErasのループ
     for (let i = 0; i < this.japaneseEras.length; i++) {
       const era = this.japaneseEras[i];
       if (
@@ -21,7 +28,7 @@ class JapaneseEraConverter {
         (year < era.endYear ||
           (year == era.endYear &&
             (month < era.startMonth ||
-              (month == era.startMonth && day < era.startDay))))
+              (month == era.startMonth && day <= era.startDay))))
       ) {
         const eraName = era.name;
         let eraYear = year - era.startYear + 1;
@@ -34,6 +41,6 @@ class JapaneseEraConverter {
         return { 年号: eraName, 年: eraYear, 月: month, 日: day };
       }
     }
-    return error = "該当する和暦がありません";
+    throw new Error("該当する和暦がありません。");
   }
 }
