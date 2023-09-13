@@ -31,8 +31,16 @@
             // 西暦の取得
             const western_calendar = event.record['西暦'].value;
 
+            // Date型チェック
+            const dateCheck = new Date(western_calendar);
+            if(isNaN(dateCheck.getDate())){
+
+                throw new Error("西暦を正しく入力してください。");
+
+            };
+
             // 西暦の年月日 Number型へ変換でゼロ詰め
-            let date_year = western_calendar.slice(0, 4);
+            let date_year = Number(western_calendar.slice(0, 4));
             let date_month = Number(western_calendar.slice(5, 7));
             let date_day = Number(western_calendar.slice(8, 10));
 

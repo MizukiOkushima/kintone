@@ -13,7 +13,7 @@ class JapaneseEraConverter {
   convertToJapaneseEra(year, month, day) {
 
     // Number型チェック
-    if (typeof year != 'number' || typeof month != 'number' || typeof day != 'number') {
+    if (isNaN(year) || isNaN(month) || isNaN(day)) {
       throw new Error("年月日を正しく入力してください。");
     }
 
@@ -24,11 +24,7 @@ class JapaneseEraConverter {
         (year > era.startYear ||
           (year == era.startYear &&
             (month > era.startMonth ||
-              (month == era.startMonth && day >= era.startDay)))) &&
-        (year < era.endYear ||
-          (year == era.endYear &&
-            (month < era.startMonth ||
-              (month == era.startMonth && day <= era.startDay))))
+              (month == era.startMonth && day >= era.startDay))))
       ) {
         const eraName = era.name;
         let eraYear = year - era.startYear + 1;
