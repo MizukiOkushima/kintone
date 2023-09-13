@@ -12,6 +12,12 @@
         'app.record.edit.change.西暦',
     ];
 
+    // 作成・編集イベント
+    const events_create_edit = [
+        'app.record.create.show',
+        'app.record.edit.show'
+    ];
+
     //レコード詳細表示イベント
     const eventEditDetail = [
         'app.record.detail.show'
@@ -33,7 +39,7 @@
 
             // Date型チェック
             const dateCheck = new Date(western_calendar);
-            if(isNaN(dateCheck.getDate())){
+            if (isNaN(dateCheck.getDate())) {
 
                 throw new Error("西暦を正しく入力してください。");
 
@@ -56,8 +62,14 @@
             const month = japanese_era.月;
             const day = japanese_era.日;
 
+            // 各フィールドに代入
+            event.record['和暦'].value = era_name;
+            event.record['年'].value = era_year;
+            event.record['月'].value = month;
+            event.record['日'].value = day;
+
             // 和暦フィールドに文字列結合した値を代入
-            event.record['和暦'].value = era_name + era_year + "年" + month + "月" + day + "日";
+            event.record['和暦年月日'].value = era_name + era_year + "年" + month + "月" + day + "日";
 
             return event;
 
@@ -72,16 +84,37 @@
     });
 
     //
+    // 作成・編集イベント
+    //
+
+    kintone.events.on(events_create_edit, async (event) => {
+
+        // 各フィールドの非活性
+        event.record['和暦'].disabled = true;
+        event.record['年'].disabled = true;
+        event.record['月'].disabled = true;
+        event.record['日'].disabled = true;
+        event.record['和暦年月日'].disabled = true;
+
+    });
+
+    //
     //  レコード詳細表示イベント
     //
 
     kintone.events.on(eventEditDetail, async (event) => {
 
+        // 「年」ラベル非表示
+        document.getElementsByClassName('control-label-field-gaia')[0].style.display = 'none';
+
         // 各フィールドの非活性
         event.record['西暦'].disabled = true;
         event.record['和暦'].disabled = true;
+        event.record['年'].disabled = true;
+        event.record['月'].disabled = true;
+        event.record['日'].disabled = true;
+        event.record['和暦年月日'].disabled = true;
 
     });
-
 
 })();
