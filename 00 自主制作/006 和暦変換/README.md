@@ -55,6 +55,7 @@ let date_day = Number(western_calendar.slice(8, 10));
 #### 戻り値
 {era_name: '西暦', era_year: '年', month: '月', day: '日'}　型：オブジェクト<br>
 era_yearが「1」年の場合元年の「元」が戻り値に設定されます<br>
+そのため年に関しては、文字列が入るSINGLE_LINE_TEXTを使用しています<br>
 <br>
 
 #### インスタンス
