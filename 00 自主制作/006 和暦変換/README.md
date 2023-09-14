@@ -31,9 +31,9 @@ kintoneの導入したいアプリにて、「JavaScript/CSSカスタマイズ�
 
 ### ライブラリの仕様
 #### 引数
-・第一引数：year　　型：数値<br>
-・第二引数：month　型：数値<br>
-・第三引数：day　　型：数値<br>
+第一引数：year　　型：数値<br>
+第二引数：month　型：数値<br>
+第三引数：day　　型：数値<br>
 <br>
 kintoneの日付フィールドを使用する場合、下記のように文字列変換を行って数値型へ変換できる引数を使用してください<br>
 ゼロパディングがある場合、ゼロ詰めとしてNumber()関数を使用してください<br>
@@ -53,7 +53,8 @@ let date_day = Number(western_calendar.slice(8, 10));
 <br>
 
 #### 戻り値
-・{era_name: '西暦', era_year: '年', month: '月', day: '日'}　型：オブジェクト<br>
+{era_name: '西暦', era_year: '年', month: '月', day: '日'}　型：オブジェクト<br>
+era_yearが「1」年の場合元年の「元」が戻り値に設定されます<br>
 <br>
 
 #### インスタンス
