@@ -53,7 +53,8 @@ let date_day = Number(western_calendar.slice(8, 10));
 <br>
 
 #### 戻り値
-{era_name: '西暦', era_year: '年', month: '月', day: '日'}　型：オブジェクト<br>
+ex. 2019-05-01（令和元年5月1日）の場合
+{年号: '令和', 年: '元', 月: 5, 日: 1}　型：オブジェクト<br>
 era_yearが「1」年の場合元年の「元」が戻り値に設定されます<br>
 そのため年に関しては、文字列が入るSINGLE_LINE_TEXTを使用しています<br>
 <br>
