@@ -50,4 +50,4 @@ https://www.digitalocean.com/community/tutorials/js-filter-array-method-ja<br>
 <br>
 
 ## イメージ
-
+![スクリーンショット 2023-09-15 22 41 00](https://github.com/MizukiOkushima/kintone/assets/95268598/f644a743-284b-4c25-b65c-fa28109e977e)
