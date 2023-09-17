@@ -12,15 +12,15 @@
         'app.record.edit.change.西暦',
     ];
 
-    // 作成・編集イベント
+    // レコード作成・編集イベント
     const events_create_edit = [
         'app.record.create.show',
         'app.record.edit.show'
     ];
 
-    //レコード詳細表示イベント
-    const eventEditDetail = [
-        'app.record.detail.show'
+    // 一覧編集イベント
+    const events_index_edit = [
+        'app.record.index.edit.show'
     ];
 
     // 汎用エラーメッセージ
@@ -84,36 +84,58 @@
     });
 
     //
-    // 作成・編集イベント
+    // レコード作成・編集イベント
     //
 
-    kintone.events.on(events_create_edit, async (event) => {
+    kintone.events.on(events_create_edit, (event) => {
 
-        // 各フィールドの非活性
-        event.record['和暦'].disabled = true;
-        event.record['年'].disabled = true;
-        event.record['月'].disabled = true;
-        event.record['日'].disabled = true;
-        event.record['和暦年月日'].disabled = true;
+        try {
+
+            // 各フィールドの非活性
+            event.record['和暦'].disabled = true;
+            event.record['年'].disabled = true;
+            event.record['月'].disabled = true;
+            event.record['日'].disabled = true;
+            event.record['和暦年月日'].disabled = true;
+
+            return event;
+
+        } catch (error) {
+
+            console.log(error);
+            event.error = COMMON_ERROR_MESSAGE + '/n' + error.message;
+            return event;
+
+        }
 
     });
 
     //
-    //  レコード詳細表示イベント
+    // 一覧編集イベント
     //
 
-    kintone.events.on(eventEditDetail, async (event) => {
+    kintone.events.on(events_index_edit, (event) => {
 
-        // 「年」ラベル非表示
-        document.getElementsByClassName('control-label-field-gaia')[0].style.display = 'none';
 
-        // 各フィールドの非活性
-        event.record['西暦'].disabled = true;
-        event.record['和暦'].disabled = true;
-        event.record['年'].disabled = true;
-        event.record['月'].disabled = true;
-        event.record['日'].disabled = true;
-        event.record['和暦年月日'].disabled = true;
+        try {
+
+            // 各フィールドの非活性
+            event.record['西暦'].disabled = true;
+            event.record['和暦'].disabled = true;
+            event.record['年'].disabled = true;
+            event.record['月'].disabled = true;
+            event.record['日'].disabled = true;
+            event.record['和暦年月日'].disabled = true;
+
+            return event;
+
+        } catch (error) {
+
+            console.log(error);
+            event.error = COMMON_ERROR_MESSAGE + '/n' + error.message;
+            return event;
+
+        }
 
     });
 
