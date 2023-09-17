@@ -40,3 +40,5 @@ subSetTimeout = setTimeout(updateHTMLTag, 1000);
 なし
 
 ## イメージ
+https://github.com/MizukiOkushima/kintone/assets/95268598/3efcc25d-3770-4169-a0fa-912d6efb9614
+
