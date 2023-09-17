@@ -8,9 +8,18 @@
 		'app.record.edit.change.zipcode'
 	];
 
+	// 一覧編集イベント
+	const events_index_edit = [
+		'app.record.index.edit.show'
+	];
+
 	// 汎用エラーメッセージ
 	const COMMON_ERROR_MESSAGE = 'エラーが発生しました。システム担当者に連絡してください。';
-
+	
+	
+	//
+	// 郵便番号チェンジイベント 郵便番号入力時に自動で住所入力
+	//
 	kintone.events.on(events_change_zipcode, (event) => {
 
 		try {
@@ -45,6 +54,33 @@
 
 	});
 
+	//
+	// 一覧編集イベント
+	// 
 
+	kintone.events.on(events_index_edit, (event) => {
+
+		try {
+
+			// 項目を比活性にする
+			event.record['zipcode'].disabled = true;
+			event.record['pref'].disabled = true;
+			event.record['city'].disabled = true;
+			event.record['town'].disabled = true;
+			event.record['address'].disabled = true;
+			event.record['fullAddress'].disabled = true;
+
+			return event;
+
+		} catch (error) {
+
+			console.log(error);
+			event.error = COMMON_ERROR_MESSAGE;
+
+			return event;
+
+		}
+
+	});
 
 })();
