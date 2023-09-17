@@ -116,7 +116,6 @@
 
     kintone.events.on(events_index_edit, (event) => {
 
-
         try {
 
             // 各フィールドの非活性
