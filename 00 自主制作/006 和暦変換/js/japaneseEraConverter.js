@@ -10,12 +10,19 @@ class JapaneseEraConverter {
     ];
   }
 
-  convertToJapaneseEra(year, month, day) {
+  convertToJapaneseEra(fieldValue) {
 
-    // Number型チェック
-    if (isNaN(year) || isNaN(month) || isNaN(day)) {
-      throw new Error("年月日を正しく入力してください。");
-    }
+		// 入力したフィールドの値のバリデーションチェック
+		// Date型チェック
+    const dateCheck = new Date(fieldValue);
+    if (isNaN(dateCheck.getTime())) {
+      throw new Error("西暦を正しく入力してください。");
+    };
+
+    // 西暦の年月日 parseInt関数でゼロ詰め
+    const year = parseInt(fieldValue.slice(0, 4), 10);
+    const month = parseInt(fieldValue.slice(5, 7), 10);
+    const day = parseInt(fieldValue.slice(8, 10), 10);
 
     // japaneseErasのループ
     for (let i = 0; i < this.japaneseEras.length; i++) {

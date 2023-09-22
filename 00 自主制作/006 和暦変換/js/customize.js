@@ -36,25 +36,12 @@
 
             // 西暦の取得
             const western_calendar = event.record['西暦'].value;
-
-            // Date型チェック
-            const dateCheck = new Date(western_calendar);
-            if (isNaN(dateCheck.getDate())) {
-
-                throw new Error("西暦を正しく入力してください。");
-
-            };
-
-            // 西暦の年月日 Number型へ変換でゼロ詰め
-            let date_year = Number(western_calendar.slice(0, 4));
-            let date_month = Number(western_calendar.slice(5, 7));
-            let date_day = Number(western_calendar.slice(8, 10));
-
+            
             // クラスのインスタンスを生成
             const converter = new JapaneseEraConverter();
 
             // 和暦変換
-            const japanese_era = converter.convertToJapaneseEra(date_year, date_month, date_day);
+            const japanese_era = converter.convertToJapaneseEra(western_calendar);
 
             // 返ってきた値
             const era_name = japanese_era.年号;
