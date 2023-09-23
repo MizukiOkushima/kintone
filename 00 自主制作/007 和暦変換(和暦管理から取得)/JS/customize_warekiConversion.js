@@ -52,11 +52,24 @@
 					// レコード取得
 					const event = kintone.app.record.get();
 
+					// 会社情報アプリからレコード取得
+					let client = new KintoneRestAPIClient();
+					let param = {};
+					param.app = AppIds.wareki;
+					const warekiResp = await client.record.getAllRecords(param);
+
+					// 年号開始日を降順に並べ替え（和暦管理テーブルの年号開始日が正しい順序で登録されていない場合の対策）
+					const warekiTable = warekiResp[0]['和暦管理'].value.sort((a, b) => {
+						const dateA = new Date(a.value["年号開始日"].value);
+						const dateB = new Date(b.value["年号開始日"].value);
+						return dateB - dateA;
+					});
+
 					// 日付の取得
 					const fieldDateValue = event.record['日付'].value;
 
 					// 日付の和暦変換
-					const warekiDate = await convertToJapaneseEra(fieldDateValue, '日付');
+					const warekiDate = await convertToJapaneseEra(fieldDateValue, '日付', warekiTable);
 
 					// 和暦変換後の使用
 					alert("日付のフィールの和暦は" + warekiDate.eraName + warekiDate.eraYear + "年" + warekiDate.month + "月" + warekiDate.day + "日です！");
@@ -124,11 +137,24 @@
 					// レコード取得
 					const event = kintone.app.record.get();
 
+					// 会社情報アプリからレコード取得
+					let client = new KintoneRestAPIClient();
+					let param = {};
+					param.app = AppIds.wareki;
+					const warekiResp = await client.record.getAllRecords(param);
+
+					// 年号開始日を降順に並べ替え（和暦管理テーブルの年号開始日が正しい順序で登録されていない場合の対策）
+					const warekiTable = warekiResp[0]['和暦管理'].value.sort((a, b) => {
+						const dateA = new Date(a.value["年号開始日"].value);
+						const dateB = new Date(b.value["年号開始日"].value);
+						return dateB - dateA;
+					});
+
 					// 日付の取得
 					const fieldDateValue = event.record['日付'].value;
 
 					// 日付の和暦変換 convertToJapaneseEra関数（第一引数：変換するフィールドの値, 第二引数：フィールド名（String））
-					const warekiDate = await convertToJapaneseEra(fieldDateValue, '日付');
+					const warekiDate = convertToJapaneseEra(fieldDateValue, '日付', warekiTable);
 
 					// 和暦変換後の使用方法 オブジェクト型{ "eraName": 年号, "eraYear": 年, "month": 月, "day": 日 }
 					alert("日付のフィールの和暦は" + warekiDate.eraName + warekiDate.eraYear + "年" + warekiDate.month + "月" + warekiDate.day + "日です！");
@@ -169,13 +195,14 @@
 	//----------------------------------------------------------------------------------------
 	//　<< 関数 >>	和暦変換
 	// ---------------------------------------------------------------------------------------
-	//	第一引数：fieldDateValue 日付フィールドの値(String)
-	//	第二引数：fieldName		 和暦へ変換するフィールド名(String)
-	//	戻り値	：オブジェクト型  { "eraName": 年号, "eraYear": 年, "month": 月, "day": 日 }
-	//		   					※年が「1」年の場合：「元」年
+	//	第一引数：fieldDateValue 日付フィールドの値 (String)
+	//	第二引数：fieldName		 和暦へ変換するフィールド名 (String)
+	//  第三引数：warekiTable	 各年号、各年号開始日 (Object)
+	//	戻り値	：{ "eraName": 年号, "eraYear": 年, "month": 月, "day": 日 }
+	//			※ 年が「1」年の場合：「元」年
 	//----------------------------------------------------------------------------------------
 
-	async function convertToJapaneseEra(fieldDateValue, fieldName) {
+	function convertToJapaneseEra(fieldDateValue, fieldName, warekiTable) {
 
 		// 入力したフィールドの値のバリデーションチェック
 		// Date型チェック
@@ -183,19 +210,6 @@
 		if (isNaN(dateCheckValue.getTime())) {
 			throw new Error(`${fieldName}を正しく入力してください。`);
 		};
-
-		// 会社情報アプリからレコード取得
-		let client = new KintoneRestAPIClient();
-		let param = {};
-		param.app = AppIds.wareki;
-		const warekiResp = await client.record.getAllRecords(param);
-
-		// 年号開始日を降順に並べ替え（和暦管理テーブルの年号開始日が正しい順序で登録されていない場合の対策）
-		const warekiTable = warekiResp[0]['和暦管理'].value.sort((a, b) => {
-			const dateA = new Date(a.value["年号開始日"].value);
-			const dateB = new Date(b.value["年号開始日"].value);
-			return dateB - dateA;
-		});
 
 		// 入力したフィールドの各年月日変換 parseInt関数でゼロ詰め(ex.01 → 1)
 		const fieldYear = parseInt((fieldDateValue.slice(0, 4)), 10);
