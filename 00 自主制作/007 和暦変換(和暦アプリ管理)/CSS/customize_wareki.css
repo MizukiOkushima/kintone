@@ -1,0 +1,5 @@
+
+/* 和暦管理テーブル最終行のみ列追加ボタン表示 サブテーブルの番号を指定してください */
+.subtable-6529973 tr:not(:last-child) .subtable-operation-gaia {
+    display: none;
+}
