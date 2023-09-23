@@ -27,3 +27,5 @@ kintone開発にて、和暦を必要とする案件が出てきたため作成�
 なし
 
 ## イメージ
+<img width="375" alt="スクリーンショット 2023-09-23 10 44 45" src="https://github.com/MizukiOkushima/kintone/assets/95268598/bc0a98ab-3244-4280-8f4b-db39802b6cb1">
+<img width="900" alt="スクリーンショット 2023-09-23 10 44 25" src="https://github.com/MizukiOkushima/kintone/assets/95268598/c10094c3-accc-4214-a164-39f48e2f1832">
